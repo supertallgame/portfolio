@@ -1,0 +1,31 @@
+# CoreEconomy configuration
+prefix: "<gold>[Economy]</gold> <gray>"
+currency-symbol: "$"
+starting-balance: 100.0
+autosave-minutes: 5
+
+shop:
+  title: "<dark_green>Server Shop"
+  # buy  = price players pay per item (-1 = cannot be bought)
+  # sell = price players receive per item (-1 = cannot be sold)
+  # Left-click = 1 item, Shift+Left = 16 (buy)   |   Right-click = 1, Shift+Right = 16 (sell)
+  items:
+    - { material: COBBLESTONE,   buy: 5,    sell: 1 }
+    - { material: OAK_LOG,       buy: 8,    sell: 2 }
+    - { material: COAL,          buy: 12,   sell: 4 }
+    - { material: IRON_INGOT,    buy: 30,   sell: 10 }
+    - { material: GOLD_INGOT,    buy: 60,   sell: 20 }
+    - { material: DIAMOND,       buy: 250,  sell: 80 }
+    - { material: BREAD,         buy: 10,   sell: 2 }
+    - { material: COOKED_BEEF,   buy: 15,   sell: 4 }
+    - { material: ENDER_PEARL,   buy: 100,  sell: 30 }
+
+# Money awarded when a player kills a mob (use Bukkit EntityType names)
+mob-rewards:
+  ZOMBIE: 5
+  SKELETON: 5
+  CREEPER: 8
+  SPIDER: 4
+  ENDERMAN: 15
+  WITCH: 20
+  BLAZE: 12

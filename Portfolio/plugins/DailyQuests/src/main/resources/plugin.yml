@@ -1,0 +1,19 @@
+name: DailyQuests
+version: '${project.version}'
+main: dev.portfolio.quests.QuestsPlugin
+api-version: '1.21'
+author: YourName
+description: Daily randomised quests with progress tracking and rewards.
+
+commands:
+  quests:
+    description: View your daily quests
+    aliases: [quest, dq]
+    usage: /quests [reroll <player> | reload]
+
+permissions:
+  dailyquests.use:
+    default: true
+  dailyquests.admin:
+    description: Reload config and reroll players' quests
+    default: op
