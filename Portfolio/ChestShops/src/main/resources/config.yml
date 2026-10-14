@@ -1,0 +1,18 @@
+# ChestShops configuration  (apply changes with /pshop reload)
+prefix: "<gold>[Shop]</gold> <gray>"
+
+# Text on the first line of every shop sign
+sign-title: "[Shop]"
+
+# Which sign item players receive from /shopsign (must be a normal sign, e.g. OAK_SIGN, SPRUCE_SIGN, CRIMSON_SIGN)
+sign-material: OAK_SIGN
+
+# Anti-grief: a shop can only be put on a chest the player placed themselves.
+# Set to false if you use a land-claim plugin to protect chests instead.
+require-placed-by-owner: true
+
+# Stop hoppers pulling items out of shop chests
+protect-from-hoppers: true
+
+# Stop explosions and pistons from destroying or moving shop chests and signs
+protect-from-explosions: true

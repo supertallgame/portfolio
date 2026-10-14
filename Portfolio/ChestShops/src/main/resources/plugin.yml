@@ -1,0 +1,26 @@
+name: ChestShops
+version: '${project.version}'
+main: dev.portfolio.chestshop.ChestShopPlugin
+api-version: '1.21'
+description: Item-for-item chest shops created from a /shopsign menu.
+
+commands:
+  shopsign:
+    description: Open the menu to create a shop sign
+    aliases: [ss]
+    usage: /shopsign
+  pshop:
+    description: ChestShops help and admin tools
+    aliases: [chestshop]
+    usage: /pshop [help|reload]
+
+permissions:
+  playershops.create:
+    description: Use /shopsign and place shops
+    default: true
+  playershops.use:
+    description: Trade at other players' shops
+    default: true
+  playershops.admin:
+    description: Bypass shop protection, /pshop reload
+    default: op

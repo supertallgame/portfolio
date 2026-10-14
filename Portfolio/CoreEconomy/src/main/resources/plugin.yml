@@ -1,0 +1,38 @@
+name: CoreEconomy
+version: '${project.version}'
+main: dev.portfolio.economy.EconomyPlugin
+api-version: '1.21'
+description: Standalone economy with a GUI shop and mob rewards.
+
+commands:
+  balance:
+    description: Check your or another player's balance
+    aliases: [bal, money]
+    usage: /balance [player]
+  pay:
+    description: Send money to another player
+    usage: /pay <player> <amount>
+  baltop:
+    description: Show the richest players
+    usage: /baltop
+  eco:
+    description: Admin economy management
+    usage: /eco <give|take|set|reload> ...
+  shop:
+    description: Open the server shop
+    usage: /shop
+
+permissions:
+  economy.balance:
+    default: true
+  economy.balance.others:
+    default: true
+  economy.pay:
+    default: true
+  economy.baltop:
+    default: true
+  economy.shop:
+    default: true
+  economy.admin:
+    description: Use /eco
+    default: op
