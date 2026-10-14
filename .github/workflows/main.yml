@@ -21,11 +21,23 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Find ${{ matrix.plugin }}
+        id: find
+        run: |
+          POM=$(find . -path "*/${{ matrix.plugin }}/pom.xml" | head -n 1)
+          if [ -z "$POM" ]; then
+            echo "Could not find ${{ matrix.plugin }}/pom.xml in the repo"
+            find . -name pom.xml
+            exit 1
+          fi
+          echo "pom=$POM" >> "$GITHUB_OUTPUT"
+          echo "dir=$(dirname "$POM")" >> "$GITHUB_OUTPUT"
+
       - name: Build ${{ matrix.plugin }}
-        run: mvn -B clean package --file ${{ matrix.plugin }}/pom.xml
+        run: mvn -B clean package --file ${{ steps.find.outputs.pom }}
 
       - name: Upload jar
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.plugin }}
-          path: ${{ matrix.plugin }}/target/*.jar
+          path: ${{ steps.find.outputs.dir }}/target/*.jar
