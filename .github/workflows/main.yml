@@ -2,8 +2,10 @@ name: Build plugins
 
 on:
   push:
-  pull_request:
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -41,3 +43,24 @@ jobs:
         with:
           name: ${{ matrix.plugin }}
           path: ${{ steps.find.outputs.dir }}/target/*.jar
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: jars
+          merge-multiple: true
+
+      - name: Publish release with the jars
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ls -l jars
+          gh release delete latest --cleanup-tag --yes --repo "$GITHUB_REPOSITORY" || true
+          gh release create latest jars/*.jar \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Latest build" \
+            --notes "Plugin jars built from commit $GITHUB_SHA"
